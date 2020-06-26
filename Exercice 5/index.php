@@ -9,8 +9,8 @@ Exercice : Créer une fonction biggestOf() qui prend 2 arguments de type "int". 
 
 // Fonction à créer ici
 //-------------------------------------------------------------------------
-function biggestOf(array $number){
-    return big($number);
+function biggestOf(int $number){
+    return $number;
 }
 
 
