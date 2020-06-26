@@ -10,7 +10,7 @@ Exercice : Créer une fonction removeDuplicates() qui prend 1 argument de type "
 // Fonction à créer ici
 //-------------------------------------------------------------------------
 function removeDuplicates(array $val){
-    unset($val[array_search($val,$val)]);
+    array_splice($val[array_search($val,$val)]);
     return array_values($val);
 }
 
