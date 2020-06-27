@@ -9,8 +9,10 @@ Exercice : Créer une fonction sortArray() qui prend 1 argument de type "array" 
 
 // Fonction à créer ici
 //-------------------------------------------------------------------------
-function sortArray(array $val){
-    return $val;
+function sortArray(array $array){
+    asort($array, SORT_NATURAL | SORT_FLAG_CASE);
+    return $array;
+
 }
 
 
