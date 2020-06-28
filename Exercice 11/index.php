@@ -10,12 +10,16 @@ Exercice : Créer une fonction getGoogleLogo() qui téléchargera le logo à l'a
 // Fonction à créer ici
 //-------------------------------------------------------------------------
 function getGoogleLogo(){
-    $url_to_image = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png';
-    $my_save_dir = 'logos/';
-    $img_name = 'logo_google.png';
-    $filename = basename($url_to_image);
-    $complete_save_loc = $my_save_dir . $filename;
-    file_put_contents($complete_save_loc, file_get_contents($url_to_image));
+    $url = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png';
+    $file_name = basename($url);
+    //utiliser la fonction file_get_contents pour obtenir le fichier
+    //de l'URL utulisé file_put_contents
+    //enregistrer le dossier avec base name
+    if(file_put_contents( $file_name,file_get_contents($url))) {
+        echo 'Image téléchargé avec succès';
+    } else {
+        echo 'échec de téléchargement';
+    }
 }
 
 
