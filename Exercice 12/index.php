@@ -1,5 +1,7 @@
 <?php
 
+//Ajouter un animal dans la BDD
+
 //appel des variables
 if(
     isset($_GET['name']) &&
@@ -55,6 +57,26 @@ if(
 }
 
 ?>
+
+<?php
+
+//Lister les animaux de la BDD
+
+// Connexion à la BDD
+try{
+    $bdd = new PDO('mysql:host=localhost;dbname=review_animals;charset=utf8', 'root', '');
+} catch(Exception $e){
+    die('Problème avec la base de donnée : ' . $e->getMessage());
+}
+
+//récupération des animaux
+$response = $bdd->query('SELECT * FROM animals');
+
+//récupération des animaux sous forme d'un tableau associatif
+$animals = $response->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -95,13 +117,15 @@ if(
                 <th>Name</th>
                 <th>Species</th>
                 <th>Birthdate</th>
-            </tr> 
+            </tr>
         </thead>
         <tbody>
+        <?php
+        ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?php echo htmlspecialchars( $animals['name'] ); ?></td>
+                <td><?php echo htmlspecialchars( $animals['species'] ); ?></td>
+                <td><?php echo htmlspecialchars( $animals['birthdate'] ); ?></td>
             </tr>
         </tbody>
     </table>
