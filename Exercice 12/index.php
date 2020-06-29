@@ -121,13 +121,28 @@ $animals = $response->fetchAll(PDO::FETCH_ASSOC);
         </thead>
         <tbody>
         <?php
+        //si il y a des erreurs, on les affiche, sinon on affiche les animaux
+        if(isset($errors)){
+            foreach($errors as $error){
+                echo '<p style="color:red;">' . $error . '</p>';
+            }
+        } else {
+            foreach($animals as $animal){
+                ?>
+                <tr>
+                    <td><?php echo htmlspecialchars( $animal['name'] ); ?></td>
+                    <td><?php echo htmlspecialchars( $animal['species'] ); ?></td>
+                    <td><?php echo htmlspecialchars( $animal['birthdate'] ); ?></td>
+                </tr>
+                <?php
+            }
+        
+        }
         ?>
-            <tr>
-                <td><?php echo htmlspecialchars( $animals['name'] ); ?></td>
-                <td><?php echo htmlspecialchars( $animals['species'] ); ?></td>
-                <td><?php echo htmlspecialchars( $animals['birthdate'] ); ?></td>
-            </tr>
         </tbody>
+        
     </table>
+    
+    
 </body>
 </html>
